@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/secondary"
-    tools:context=".ui.Main.MainActivity">
+    tools:context=".ui.Home.HomeActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -22,17 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dayRv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/calender_item"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        android:elevation="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
 
     <FrameLayout
         android:id="@+id/fragmentContainer"

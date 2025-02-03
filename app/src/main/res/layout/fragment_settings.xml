@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Main.Fragments.SettingsFragment">
+    tools:context=".ui.Home.Fragments.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.zerobranch.layout.SwipeLayout
+        android:id="@+id/swipe_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="90dp"
+        app:draggedItem="@id/drag_item"
+        app:leftItem="@id/right_view"
+        app:swipeDirection="right">
+
+        <ImageView
+            android:id="@+id/right_view"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#ff5722"
+            android:gravity="center"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:src="@drawable/delete_ic"/>
+
+        <TextView
+            android:id="@+id/drag_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#eeeeee"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="10dp"
+            android:textSize="20sp" />
+
+    </com.zerobranch.layout.SwipeLayout>
 
 </FrameLayout>
