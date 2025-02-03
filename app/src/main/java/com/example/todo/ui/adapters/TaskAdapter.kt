@@ -34,8 +34,14 @@ class TaskAdapter(var tasks: List<Task>) :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateTasks(newTasks:List<Task>){
+    fun updateTasks(newTasks: List<Task>) {
         tasks = newTasks
         notifyDataSetChanged()
+    }
+
+    interface onTaskClickListener {
+        fun onTaskClick(task: Task)
+        fun onDoneClick(task: Task)
+        fun onDeleteClick(task: Task)
     }
 }

@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     implementation (libs.swipelayout)
+    implementation (libs.material.calendarview)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

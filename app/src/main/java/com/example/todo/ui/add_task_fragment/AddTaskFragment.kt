@@ -2,6 +2,7 @@ package com.example.todo.ui.add_task_fragment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,7 @@ class AddTaskFragment(val onTaskAdd: () -> Unit) : BottomSheetDialogFragment() {
                         isDone = false
                     )
                 database.taskDao().addTask(task)
+                Log.e("TAG", "initListeners: ${task.date}")
                 onTaskAdd()
                 dismiss()
             }
