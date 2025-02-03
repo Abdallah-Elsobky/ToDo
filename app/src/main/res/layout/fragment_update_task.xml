@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.add_task_fragment.AddTaskFragment">
+    tools:context=".ui.update_task_fragment.UpdateTaskFragment">
 
     <TextView
         android:id="@+id/timeTV"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:gravity="center"
-        android:text="@string/add_new_task"
+        android:text="@string/update_task"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:boxBackgroundMode="outline"
+
         app:layout_constraintTop_toBottomOf="@id/timeTV">
 
         <EditText
@@ -77,12 +78,12 @@
         app:layout_constraintTop_toBottomOf="@id/selectDateTitle" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/addTaskBtn"
+        android:id="@+id/updateBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:backgroundTint="@color/primary"
-        android:text="@string/add"
+        android:text="@string/update"
         android:textAllCaps="false"
         android:textColor="@color/onPrimary"
         app:layout_constraintTop_toBottomOf="@id/selectDateTV" />

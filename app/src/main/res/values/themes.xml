@@ -2,30 +2,37 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ToDo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="background">@color/white</item>
     </style>
 
     <style name="Theme.ToDo" parent="Base.Theme.ToDo" />
-    
+
     <style name="bold22onPrime" parent="Base.Theme.ToDo">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="bold18Prime" parent="Base.Theme.ToDo">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/primary</item>
     </style>
+
     <style name="bold22Green" parent="Base.Theme.ToDo">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/green</item>
     </style>
-    <style name="bold20Black" parent="Base.Theme.ToDo">
+
+    <style name="bold20" parent="Base.Theme.ToDo">
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="bold18Green" parent="Base.Theme.ToDo">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>

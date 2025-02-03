@@ -1,14 +1,17 @@
 package com.example.todo.ui.adapters
 
-import android.annotation.SuppressLint
+import TaskDiffCallback
+import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.todo.databinding.TaskItemBinding
 import com.example.todo.database.entities.Task
 
-class TaskAdapter(var tasks: List<Task>) :
+class TaskAdapter(var tasks: List<Task>, var onClick: onTaskClickListener) :
     Adapter<TaskAdapter.TaskViewHolder>() {
 
 
@@ -30,13 +33,34 @@ class TaskAdapter(var tasks: List<Task>) :
         fun bind(task: Task) {
             binding.taskTitle.text = task.title
             binding.taskTime.text = task.time
+            if (task.isDone) {
+                markAsDone()
+            }
+            binding.deleteBtn.setOnClickListener({
+                onClick.onDeleteClick(task)
+            })
+            binding.doneBtn.setOnClickListener({
+                markAsDone()
+                onClick.onDoneClick(task)
+            })
+            binding.cardView.setOnClickListener({
+                onClick.onTaskClick(task)
+            })
+        }
+        private fun markAsDone() {
+            binding.taskTitle.setTextColor(Color.GREEN)
+            binding.taskTime.setTextColor(Color.GREEN)
+            binding.line1.setBackgroundColor(Color.GREEN)
+            binding.doneBtn.visibility = View.GONE
+            binding.timeIc.setColorFilter(Color.GREEN)
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateTasks(newTasks: List<Task>) {
+        val diffCallback = TaskDiffCallback(tasks, newTasks)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         tasks = newTasks
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     interface onTaskClickListener {

@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Home.Fragments.SettingsFragment">
 
-    <com.zerobranch.layout.SwipeLayout
-        android:id="@+id/swipe_layout"
+    <TextView
+        android:id="@+id/langtv"
+        style="@style/bold20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/language"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/langSp"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        app:draggedItem="@id/drag_item"
-        app:leftItem="@id/right_view"
-        app:swipeDirection="right">
+        android:layout_height="wrap_content"
+        android:entries="@array/myLanguageItems"
+        app:layout_constraintTop_toBottomOf="@id/langtv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="32dp"
+        android:padding="8dp"
+        android:background="@drawable/item_bg"
+        />
 
-        <ImageView
-            android:id="@+id/right_view"
-            android:layout_width="90dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#ff5722"
-            android:gravity="center"
-            android:paddingEnd="24dp"
-            android:paddingStart="24dp"
-            android:src="@drawable/delete_ic"/>
+    <TextView
+        android:id="@+id/modetv"
+        style="@style/bold20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/mode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/langSp" />
 
-        <TextView
-            android:id="@+id/drag_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#eeeeee"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:paddingEnd="10dp"
-            android:textSize="20sp" />
+    <Spinner
+        android:id="@+id/modeSp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/myModeItems"
+        app:layout_constraintTop_toBottomOf="@id/modetv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="32dp"
+        android:padding="8dp"
+        android:background="@drawable/item_bg"
+        />
 
-    </com.zerobranch.layout.SwipeLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
