@@ -3,7 +3,8 @@
     <style name="Base.Theme.ToDo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorSecondary">@color/secondaryDark</item>
+        <item name="colorOnSecondary">@color/secondaryDark</item>
+        <item name="colorSecondary">@color/primary</item>
         <item name="colorOnSurface">@color/white</item>
         <item name="background">@color/gray</item>
     </style>
