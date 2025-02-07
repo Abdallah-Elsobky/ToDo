@@ -2,18 +2,20 @@ package com.example.todo.ui.adapters
 
 import TaskDiffCallback
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.todo.R
 import com.example.todo.databinding.TaskItemBinding
 import com.example.todo.database.entities.Task
 
 class TaskAdapter(var tasks: List<Task>, var onClick: onTaskClickListener) :
     Adapter<TaskAdapter.TaskViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val binding = TaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,6 +25,11 @@ class TaskAdapter(var tasks: List<Task>, var onClick: onTaskClickListener) :
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val task = tasks[position]
+        if (task.isDone) {
+            holder.markAsDone()
+        } else {
+            holder.markAsNotDone()
+        }
         holder.bind(task)
     }
 
@@ -31,11 +38,12 @@ class TaskAdapter(var tasks: List<Task>, var onClick: onTaskClickListener) :
     inner class TaskViewHolder(val binding: TaskItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(task: Task) {
+            Log.e("Tago", tasks.size.toString())
             binding.taskTitle.text = task.title
             binding.taskTime.text = task.time
-            if (task.isDone) {
-                markAsDone()
-            }
+//            if (task.isDone) {
+//                markAsDone()
+//            }
             binding.deleteBtn.setOnClickListener({
                 onClick.onDeleteClick(task)
             })
@@ -47,12 +55,22 @@ class TaskAdapter(var tasks: List<Task>, var onClick: onTaskClickListener) :
                 onClick.onTaskClick(task)
             })
         }
-        private fun markAsDone() {
+
+        fun markAsDone() {
             binding.taskTitle.setTextColor(Color.GREEN)
             binding.taskTime.setTextColor(Color.GREEN)
             binding.line1.setBackgroundColor(Color.GREEN)
             binding.doneBtn.visibility = View.GONE
             binding.timeIc.setColorFilter(Color.GREEN)
+        }
+
+        fun markAsNotDone() {
+            val primary = ContextCompat.getColor(binding.root.context, R.color.primary)
+            binding.taskTitle.setTextColor(primary)
+            binding.taskTime.setTextColor(primary)
+            binding.line1.setBackgroundColor(primary)
+            binding.doneBtn.visibility = View.VISIBLE
+            binding.timeIc.setColorFilter(primary)
         }
     }
 

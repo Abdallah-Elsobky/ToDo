@@ -11,7 +11,6 @@ import com.example.todo.database.TodoDatabase
 import com.example.todo.database.entities.Task
 import com.example.todo.ui.adapters.TaskAdapter
 import com.example.todo.databinding.FragmentTaskBinding
-import com.example.todo.ui.add_task_fragment.AddTaskFragment
 import com.example.todo.ui.update_task_fragment.UpdateTaskFragment
 import com.example.todo.utils.toEpoch
 import com.prolificinteractive.materialcalendarview.CalendarDay
@@ -51,7 +50,7 @@ class TaskFragment : Fragment() {
         adapter = TaskAdapter(getTasks, object : TaskAdapter.onTaskClickListener {
             override fun onTaskClick(task: Task) {
                 UpdateTaskFragment(task, {
-                    adapter.notifyDataSetChanged()
+                    refreshAdapter()
                 }).show(parentFragmentManager, null)
             }
 
